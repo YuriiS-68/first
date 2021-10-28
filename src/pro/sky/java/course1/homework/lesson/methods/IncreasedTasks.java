@@ -5,17 +5,17 @@ import java.util.Random;
 public class IncreasedTasks {
     public static void main(String[] args) {
         double[] spendingMonth = generateRandomArray();
-        task6(spendingMonth);
+
+        System.out.println("The average amount spent per month was: " + task6(spendingMonth) + " RUB.");
     }
 
-    public static void task6(double[] spendingMonth){
+    public static double task6(double[] spendingMonth){
         double sum = 0;
 
         for (double element : spendingMonth) {
             sum += element;
         }
-        double averageSum = sum / spendingMonth.length;
-        System.out.println("The average amount spent per month was: " + improvedRead(averageSum) + " RUB.");
+        return sum / spendingMonth.length;
     }
 
     public static double[] generateRandomArray() {
@@ -28,7 +28,7 @@ public class IncreasedTasks {
         return array;
     }
 
-    public static String improvedRead(double sumMonth){
+    /*public static String improvedRead(double sumMonth){
         String[] preparedLine = String.valueOf(sumMonth).split("\\.");
         String improvedString = "";
         String invertedString = "";
@@ -46,5 +46,5 @@ public class IncreasedTasks {
             }
         }
         return improvedString + '.' + preparedLine[1];
-    }
+    }*/
 }
