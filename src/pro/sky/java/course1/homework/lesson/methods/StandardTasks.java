@@ -9,7 +9,7 @@ public class StandardTasks {
         int[] arrays = {5, 6, 1, 2, 3};
         task1(2017);
         task2(1, 2020);
-        task3(97);
+        System.out.println(task3(101));
         task4(str);
         task5(arrays);
     }
@@ -44,18 +44,19 @@ public class StandardTasks {
         }
     }
 
-    public static void task3(int deliveryDistance){
+    public static int task3(int deliveryDistance){
+        int deliveryDays = 1;
+
         if (deliveryDistance <= 20){
-            System.out.println("It will take one day for delivery.");
+            return deliveryDays;
         }
 
-        if (deliveryDistance > 20 && deliveryDistance <= 60){
-            System.out.println("It will take two days for delivery.");
+        if (deliveryDistance <= 60){
+            return deliveryDays + 1;
+        } else if (deliveryDistance <= 100){
+            return deliveryDays + 2;
         }
-
-        if (deliveryDistance > 60 && deliveryDistance <= 100){
-            System.out.println("It will take three days for delivery.");
-        }
+        return -1;
     }
 
     public static void task4(String input) {

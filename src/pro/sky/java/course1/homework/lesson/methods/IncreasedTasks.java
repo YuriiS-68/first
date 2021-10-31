@@ -23,28 +23,8 @@ public class IncreasedTasks {
         double[] array = new double[30];
 
         for (int i = 0; i < array.length; i++) {
-            array[i] = random.nextInt(100_000) + 100_000;
+            array[i] = random.nextDouble(100_000) + 100_000;
         }
         return array;
     }
-
-    /*public static String improvedRead(double sumMonth){
-        String[] preparedLine = String.valueOf(sumMonth).split("\\.");
-        String improvedString = "";
-        String invertedString = "";
-
-        char[] charsArray = preparedLine[0].toCharArray();
-        for (int i = charsArray.length - 1; i >= 0; i--) {
-            invertedString += charsArray[i];
-        }
-
-        char[] inverted = invertedString.toCharArray();
-        for (int i = inverted.length - 1; i >= 0; i--) {
-            improvedString += inverted[i];
-            if (i % 3 == 0 && i != 0){
-                improvedString += '_';
-            }
-        }
-        return improvedString + '.' + preparedLine[1];
-    }*/
 }
