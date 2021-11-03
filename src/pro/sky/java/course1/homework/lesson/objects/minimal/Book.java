@@ -1,7 +1,5 @@
 package pro.sky.java.course1.homework.lesson.objects.minimal;
 
-import pro.sky.java.course1.homework.lesson.objects.minimal.Author;
-
 public class Book {
     private String nameBook;
     private Author author;

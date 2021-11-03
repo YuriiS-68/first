@@ -14,6 +14,7 @@ public class Load {
                 book2.getAuthor().getLastName() + " Year = " + book2.getYearPublication());
 
         book1.setYearPublication(2018);
+
         System.out.println("Name = " + book1.getNameBook() + " Author = " + book1.getAuthor().getFirstName() + " " +
                 book1.getAuthor().getLastName() + " Year = " + book1.getYearPublication());
     }
