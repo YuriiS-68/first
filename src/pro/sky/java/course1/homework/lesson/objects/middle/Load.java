@@ -13,14 +13,14 @@ public class Load {
 
         Book[] bookCase = new Book[5];
 
-        BooksUtility.addBooks(book1, bookCase);
-        BooksUtility.addBooks(book1, bookCase);
-        BooksUtility.addBooks(book1, bookCase);
-        BooksUtility.addBooks(book1, bookCase);
-        BooksUtility.addBooks(book2, bookCase);
-        BooksUtility.addBooks(book1, bookCase);
-        BooksUtility.addBooks(book2, bookCase);
+        BooksUtility.addBook(book1, bookCase);
+        BooksUtility.addBook(book1, bookCase);
+        BooksUtility.addBook(book1, bookCase);
+        BooksUtility.addBook(book1, bookCase);
+        BooksUtility.addBook(book2, bookCase);
+        BooksUtility.addBook(book1, bookCase);
+        BooksUtility.addBook(book2, bookCase);
 
-        System.out.println(BooksUtility.printBook(bookCase));
+        System.out.println(BooksUtility.printBooks(bookCase));
     }
 }

@@ -1,9 +1,34 @@
-package pro.sky.java.course1.homework.lesson.objects.middle;
+package pro.sky.java.course1.homework.lesson.objects.difficult;
 
 import pro.sky.java.course1.homework.lesson.objects.minimal.Book;
 
-public class BooksUtility {
-    public static Book[] addBook(Book book, Book[] bookCase){
+public class Library {
+    private final Book[] bookCase;
+
+    public Library(Book[] bookCase){
+        this.bookCase = bookCase;
+    }
+
+    public String printInfoBook(String name){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (Book book : bookCase) {
+            if (book != null && name.equals(book.getNameBook())) {
+                stringBuilder.append(book.getNameBook()).append(" was published in ").append(book.getYearPublication());
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    public void changeYearPublishing(String name, int newDate){
+        for (Book book : bookCase) {
+            if (book != null && name.equals(book.getNameBook())) {
+                book.setYearPublication(newDate);
+            }
+        }
+    }
+
+    public Book[] addBooks(Book book){
         for (int i = 0; i < bookCase.length; i++) {
             if (bookCase[i] == null){
                 bookCase[i] = book;
@@ -17,9 +42,8 @@ public class BooksUtility {
         return bookCase;
     }
 
-    public static String printBooks(Book[] bookCase){
+    public String printBooks(Library library) {
         StringBuilder stringBuilder = new StringBuilder();
-        int count = 0;
 
         for (Book book : bookCase) {
             if (book != null) {
@@ -31,10 +55,6 @@ public class BooksUtility {
                 stringBuilder.append(": ");
                 stringBuilder.append(book.getYearPublication()).append("\n");
             }
-            if (book == null){
-                System.out.println("Cell under number " + count + " is empty.");
-            }
-            count++;
         }
         return stringBuilder.toString();
     }
