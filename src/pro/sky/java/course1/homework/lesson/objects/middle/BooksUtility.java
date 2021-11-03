@@ -12,7 +12,6 @@ public class BooksUtility {
 
             if (bookCase[i] != null && i == bookCase.length - 1){
                 System.err.println("Bookcase is full");
-                break;
             }
         }
         return bookCase;

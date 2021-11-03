@@ -12,8 +12,6 @@ public class Load {
         Book book2 = new Book("The kingdom", author2, 2020);
 
         Book[] bookCase = new Book[5];
-//        bookCase[0] = book1;
-//        bookCase[1] = book2;
 
         BooksUtility.addBooks(book1, bookCase);
         BooksUtility.addBooks(book1, bookCase);
