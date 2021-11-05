@@ -58,4 +58,16 @@ public class Library {
         }
         return stringBuilder.toString();
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Book book : bookCase) {
+            if (book != null) {
+                stringBuilder.append(book);
+            }
+            stringBuilder.append("\n");
+        }
+        return "Library:" + "\n" + stringBuilder;
+    }
 }
