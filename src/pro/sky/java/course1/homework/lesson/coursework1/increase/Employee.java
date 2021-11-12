@@ -6,10 +6,10 @@ public class Employee {
     private final String firstName;
     private final String middleName;
     private final String lastName;
-    private Department department;
+    private int department;
     private double salary;
 
-    public Employee(String firstName, String middleName, String lastName, Department department, double salary) {
+    public Employee(String firstName, String middleName, String lastName, int department, double salary) {
         counterId++;
         this.id = counterId;
         this.firstName = firstName;
@@ -35,7 +35,7 @@ public class Employee {
         return lastName;
     }
 
-    public Department getDepartment() {
+    public int getDepartment() {
         return department;
     }
 
@@ -43,7 +43,7 @@ public class Employee {
         return salary;
     }
 
-    public void setDepartment(Department department) {
+    public void setDepartment(int department) {
         this.department = department;
     }
 
@@ -59,7 +59,7 @@ public class Employee {
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", department=" + department +
-                ", salary=" + salary +
+                ", salary=" + salary + "\n" +
                 '}';
     }
 }

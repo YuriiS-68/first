@@ -1,22 +1,18 @@
 package pro.sky.java.course1.homework.lesson.coursework1.difficult;
 
+import java.util.Objects;
+
 public class Employee {
     private static long counterId;
     private long id;
     private String firstName;
     private String middleName;
     private String lastName;
-    private Department department;
+    private int department;
     private double salary;
 
-    public Employee(){
-        counterId++;
-        this.id = counterId;
-    }
-
-    public Employee(String firstName, String middleName, String lastName, Department department, double salary) {
-        counterId++;
-        this.id = counterId;
+    public Employee(String firstName, String middleName, String lastName, int department, double salary) {
+        this.id = ++counterId;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -40,7 +36,7 @@ public class Employee {
         return lastName;
     }
 
-    public Department getDepartment() {
+    public int getDepartment() {
         return department;
     }
 
@@ -60,12 +56,25 @@ public class Employee {
         return salary;
     }
 
-    public void setDepartment(Department department) {
+    public void setDepartment(int department) {
         this.department = department;
     }
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id && department == employee.department && Double.compare(employee.salary, salary) == 0 && firstName.equals(employee.firstName) && middleName.equals(employee.middleName) && lastName.equals(employee.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, middleName, lastName, department, salary);
     }
 
     @Override
