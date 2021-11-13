@@ -3,8 +3,6 @@ package pro.sky.java.course1.homework.lesson.objects.difficult;
 import pro.sky.java.course1.homework.lesson.objects.minimal.Author;
 import pro.sky.java.course1.homework.lesson.objects.minimal.Book;
 
-import java.util.Arrays;
-
 public class Load {
     public static void main(String[] args) {
         Book[] books = new Book[2];
