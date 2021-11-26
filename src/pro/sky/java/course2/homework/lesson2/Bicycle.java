@@ -1,6 +1,6 @@
 package pro.sky.java.course2.homework.lesson2;
 
-public class Bicycle extends Transport implements ServiceWorks{
+public class Bicycle extends Transport{
     public Bicycle() {
         super();
     }
@@ -10,7 +10,7 @@ public class Bicycle extends Transport implements ServiceWorks{
     }
 
     @Override
-    public void updateTyre(){
+    public void updateTyre(Transport transport){
         System.out.println("Change tyres bicycle");
     }
 }

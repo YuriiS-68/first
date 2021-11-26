@@ -1,6 +1,6 @@
 package pro.sky.java.course2.homework.lesson2;
 
-public class Truck extends Transport implements ServiceWorks{
+public class Truck extends Transport {
     public Truck() {
         super();
     }
@@ -10,16 +10,17 @@ public class Truck extends Transport implements ServiceWorks{
     }
 
     @Override
-    public void updateTyre(){
+    public void updateTyre(Transport transport){
         System.out.println("Change tyres truck");
     }
 
     @Override
-    public void checkEngine() {
+    public void checkEngine(Transport transport) {
         System.out.println("Check engine truck");
     }
 
-    public void checkTrailer() {
+    @Override
+    public void checkTrailer(Transport transport) {
         System.out.println("Check trailer");
     }
 }
