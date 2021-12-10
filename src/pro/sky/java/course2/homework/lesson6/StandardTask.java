@@ -8,12 +8,13 @@ public static void main(String[] args) {
     List<Integer> nums = new ArrayList<>(List.of(1, 8, 1, 2, 3, 4, 4, 5, 5, 6, 7, 2));
     String line = "В качестве отладочной информации возьмите произвольный набор слов или текст, в котором встречаются" +
             " повторения. Это может быть произвольный набор слов, литературный текст или произвольное предложение. ";
-    String line1 = "Однажды в стране и однажды в мире.";
-//    printOddNumbers(nums);
-//    printEvenNumbers(nums);
-//    printUniqueWords(line);
-//    printUnique(line1);
+    String line1 = "Однажды в стране и однажды в мире есть много людей любящих других людей.";
+    printOddNumbers(nums);
+    printEvenNumbers(nums);
+    printUniqueWords(line);
+    printUnique(line1);
     System.out.println(countDoubleWords(line1));
+    System.out.println(countDoubleWords2(line));
 }
 
     public static void printOddNumbers(List<Integer> arrayNums){
@@ -96,5 +97,22 @@ public static void main(String[] args) {
             }
         }
         return countDouble;
+    }
+
+    public static int countDoubleWords2(String str){
+        String[] words = str.toLowerCase().split("[^\\p{L}\\p{N}]+");
+        List<String> listWords = new ArrayList<>(List.of(words));
+        int countDouble = 0;
+        int indexStart;
+        int indexEnd;
+
+        for (String word : words) {
+            indexStart = listWords.indexOf(word);
+            indexEnd = listWords.lastIndexOf(word);
+            if (indexStart != indexEnd) {
+                countDouble++;
+            }
+        }
+        return countDouble / 2;
     }
 }
