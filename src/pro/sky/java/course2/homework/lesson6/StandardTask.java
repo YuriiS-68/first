@@ -4,21 +4,23 @@ import java.util.*;
 
 public class StandardTask {
     private static final StringBuilder result = new StringBuilder();
-public static void main(String[] args) {
-    List<Integer> nums = new ArrayList<>(List.of(1, 8, 1, 2, 3, 4, 4, 5, 5, 6, 7, 2));
-    String line = "В качестве отладочной информации возьмите произвольный набор слов или текст, в котором встречаются" +
+    private static final List<Integer> nums = new LinkedList<>(List.of(1, 8, 1, 2, 3, 4, 4, 5, 5, 6, 7, 2));
+    private static final String line = "В качестве отладочной информации возьмите произвольный набор слов или текст, в котором встречаются" +
             " повторения. Это может быть произвольный набор слов, литературный текст или произвольное предложение. ";
-    String line1 = "Однажды в стране и однажды в мире есть много людей любящих других людей.";
-    printOddNumbers(nums);
-    printEvenNumbers(nums);
-    printUniqueWords(line);
-    printUnique(line1);
-    System.out.println(countDoubleWords(line1));
-    System.out.println(countDoubleWords2(line));
+    public static final String line1 = "Однажды в стране и однажды в мире есть много людей любящих других людей.";
+
+public static void main(String[] args) {
+//    printOddNumbers(nums);
+//    printEvenNumbers();
+//    printUniqueWords(line);
+//    printUnique(line1);
+//    System.out.println(countDouble(line1));
+//    System.out.println(countDoubleWords(line1));
+//    System.out.println(countDoubleWords2(line));
 }
 
     public static void printOddNumbers(List<Integer> arrayNums){
-        arrayNums.removeIf(e -> e % 2 != 1);
+        arrayNums.removeIf(e -> e % 2 == 0);
 
         for(Integer cell : arrayNums){
             result.append(cell).append(" ");
@@ -26,21 +28,27 @@ public static void main(String[] args) {
         System.out.println(result);
     }
 
-    public static void printEvenNumbers(List<Integer> arrayNums){
-        arrayNums.removeIf(e -> e % 2 == 1);
-        arrayNums.sort(Comparator.naturalOrder());
+    public static void printEvenNumbers(){
+        List<Integer> uniqueNums = new LinkedList<>(Set.copyOf(nums));
+        uniqueNums.sort(Comparator.naturalOrder());
+        uniqueNums.removeIf(e -> e % 2 != 0);
 
-        for(Integer cell : arrayNums){
+        for(Integer cell : uniqueNums){
             result.append(cell).append(" ");
         }
         System.out.println(result);
     }
 
-    public static void printUniqueWords(String str){
-    //беру элемент и сравниваю его с остальными
-    //если элемент встретился ещё раз, перехожу к другому
-    //если нет, кладу в новый массив
+    public static void printUniqueWords(String str) {
         String[] words = str.replaceAll("[^\\da-zA-Za-яёА-ЯЁ ]", "").toLowerCase().split(" ");
+        Set<String> uniques = new LinkedHashSet<>(List.of(words));
+
+        for(String cell : uniques){
+            result.append(cell).append(" ");
+        }
+        System.out.println(result);
+    }
+        /*String[] words = str.replaceAll("[^\\da-zA-Za-яёА-ЯЁ ]", "").toLowerCase().split(" ");
         List<String> uniqueWords = new ArrayList<>(List.of(words));
         List<String> resultWords = new ArrayList<>();
         boolean wordDouble = true;
@@ -62,8 +70,7 @@ public static void main(String[] args) {
         for(String cell : resultWords){
             result.append(cell).append(" ");
         }
-        System.out.println(result);
-    }
+        System.out.println(result);*/
 
     public static void printUnique(String str) {
         String[] words = str.toLowerCase().split("[^\\p{L}\\p{N}]+");
@@ -77,6 +84,12 @@ public static void main(String[] args) {
         }
         uniques.removeAll(duplicates);
         System.out.println(String.join(" ", uniques));
+    }
+
+    public static int countDouble(String str){
+        String[] words = str.toLowerCase().split("[^\\p{L}\\p{N}]+");
+        Set<String> uniques = new HashSet<>(Arrays.asList(words));
+        return words.length - uniques.size();
     }
 
     //вывести все количество дублей из массива слов
