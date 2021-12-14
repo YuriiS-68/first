@@ -4,10 +4,10 @@ import java.util.*;
 
 public class HardTasks {
     private static final List<Integer> nums = new ArrayList<>(List.of(1, 8, 1, 2, 22, 3, 4, 4, 5, 5, 6, 7, 2));
-    private static final String line1 = "theclassroom";
-    private static final String line2 = "theclafsroom";
-    private static final String line3 = "abc";
-    private static final String line4 = "abccba";
+    private static final String line1 = "магазин74";
+    private static final String line2 = "инлз7гаа4м";
+    private static final String line3 = "174";
+    private static final String line4 = "74";
 
     public static void main(String[] args) {
         System.out.println("getSumList() = " + getSumList());
@@ -16,24 +16,22 @@ public class HardTasks {
     }
 
     public static int getSumList(){
-        Set<Integer> uniqueNums = new HashSet<>();
-        List<Integer> duplicates = new ArrayList<>();
-        List<Integer> result = new ArrayList<>();
+        int sum = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            int indexStart = nums.indexOf(nums.get(i));
+            int indexEnd = nums.lastIndexOf(nums.get(i));
+            if (indexStart == indexEnd){
+                nums.set(i, 1);
+            } else {
+                nums.set(i, 0);
+                nums.set(indexEnd, 0);
+            }
+        }
 
         for (Integer num : nums){
-            if (!uniqueNums.add(num)){
-                duplicates.add(num);
-            }
+            sum += num;
         }
-
-        for (Integer num : nums) {
-            for (Integer duplicate : duplicates) {
-                if (num.equals(duplicate)){
-                    result.add(0);
-                }
-            }
-        }
-        return nums.size() - result.size();
+        return sum;
     }
 
     public static boolean checkWords(String firstWord, String secondWord){
@@ -41,24 +39,21 @@ public class HardTasks {
     }
 
     public static boolean isAnagram(String firstWord, String secondWord){
-        char[] firstArrays = firstWord.toLowerCase().toCharArray();
-        char[] secondArrays = secondWord.toLowerCase().toCharArray();
-
-        if (firstArrays.length != secondArrays.length){
+        if (firstWord.length() != secondWord.length()){
             return false;
         }
 
-        int sumFirst = sumChars(firstArrays);
-        int sumSecond = sumChars(secondArrays);
-        return sumFirst == sumSecond;
-    }
+        StringBuilder stringBuilder = new StringBuilder(secondWord.toLowerCase());
 
-    private static int sumChars(char[] chars){
-        int sum = 0;
-        for (char ch : chars) {
-            sum += ch;
+        for (char ch : firstWord.toLowerCase().toCharArray()){
+            if (Character.isLetter(ch) || Character.isDigit(ch)){
+                int index = stringBuilder.indexOf(String.valueOf(ch));
+                if (index == -1){
+                    return false;
+                }
+                stringBuilder.deleteCharAt(index);
+            }
         }
-        return sum;
+        return true;
     }
-
 }
