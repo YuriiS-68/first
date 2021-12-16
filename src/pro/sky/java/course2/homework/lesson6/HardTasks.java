@@ -4,8 +4,8 @@ import java.util.*;
 
 public class HardTasks {
     private static final List<Integer> nums = new ArrayList<>(List.of(1, 8, 1, 2, 22, 3, 4, 4, 5, 5, 6, 7, 2));
-    private static final String line1 = "магазин74";
-    private static final String line2 = "инлз7гаа4м";
+    private static final String line1 = "магаз749";
+    private static final String line2 = "га99зма7";
     private static final String line3 = "abc8";
     private static final String line4 = "abcc8cba";
 
@@ -58,7 +58,22 @@ public class HardTasks {
             return false;
         }
 
-        StringBuilder stringBuilder = new StringBuilder(secondWord.toLowerCase());
+        List<Character> symbols = new ArrayList<>();
+
+        for (char ch : firstWord.toLowerCase().toCharArray()){
+            symbols.add(ch);
+        }
+
+        for (char ch : secondWord.toLowerCase().toCharArray()){
+            for (int i = 0; i < symbols.size(); i++){
+                if (ch == symbols.get(i)){
+                    symbols.remove(symbols.get(i));
+                }
+            }
+        }
+        return symbols.size() == 0;
+
+        /*StringBuilder stringBuilder = new StringBuilder(secondWord.toLowerCase());
 
         for (char ch : firstWord.toLowerCase().toCharArray()){
             if (Character.isLetter(ch) || Character.isDigit(ch)){
@@ -68,7 +83,6 @@ public class HardTasks {
                 }
                 stringBuilder.deleteCharAt(index);
             }
-        }
-        return true;
+        }*/
     }
 }
