@@ -6,8 +6,8 @@ public class HardTasks {
     private static final List<Integer> nums = new ArrayList<>(List.of(1, 8, 1, 2, 22, 3, 4, 4, 5, 5, 6, 7, 2));
     private static final String line1 = "магазин74";
     private static final String line2 = "инлз7гаа4м";
-    private static final String line3 = "abc";
-    private static final String line4 = "abcc8ba";
+    private static final String line3 = "abc8";
+    private static final String line4 = "abcc8cba";
 
     public static void main(String[] args) {
         System.out.println("getSumList() = " + getSumList());
@@ -44,17 +44,8 @@ public class HardTasks {
             unique.add(ch);
         }
 
-        for (int i = 0; i < charsSecond.length; i++){
-            for (Character uniqueChar : unique){
-                if (charsSecond[i] == uniqueChar){
-                    charsSecond[i] = ' ';
-                    break;
-                }
-            }
-        }
-
         for (char ch : charsSecond) {
-            if (ch != ' ') {
+            if (!unique.contains(ch)){
                 flag = false;
                 break;
             }
